@@ -34,4 +34,3 @@ def loadlot(path):
     
     print lot
 
-loadlot('test.txt')
