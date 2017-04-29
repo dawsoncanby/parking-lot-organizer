@@ -7,6 +7,8 @@ class ParkingLotGUI:
     def __init__(self):
         # setup window
         self.window = tk.Tk()
+	self.fullscreen = False
+	self.window.bind('<Escape>', self.toggle_fullscreen)
         #self.window.minsize(width=640, height=480)
         #self.window.maxsize(width=640, height=480)
         self.canvas = tk.Canvas(self.window)
@@ -15,7 +17,12 @@ class ParkingLotGUI:
         # init vars
         self.curLot = None
 
-    # load a parking lot from the given file path and put it on the canvas
+    def toggle_fullscreen(self, event=None):
+        self.fullscreen = not self.fullscreen
+        self.window.attributes('-fullscreen', self.fullscreen)
+	
+
+# load a parking lot from the given file path and put it on the canvas
     def load_lot(self, path):
         infile = open(path, 'r')
 
