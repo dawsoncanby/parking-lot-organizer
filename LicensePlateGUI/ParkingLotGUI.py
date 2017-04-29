@@ -9,8 +9,8 @@ class ParkingLotGUI:
         self.window = tk.Tk()
         self.fullscreen = False
         self.window.bind('<Escape>', self.toggle_fullscreen)
-        self.width = self.window.winfo_screenwidth()
-        self.height = self.window.winfo_screenwidth()
+        self.width = 480
+        self.height = 320
         self.canvas = tk.Canvas(self.window)
         self.canvas.create_rectangle(0, 0, self.width, self.height, fill="black")
 
