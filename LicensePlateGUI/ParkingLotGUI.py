@@ -48,3 +48,6 @@ class ParkingLotGUI:
         # add zones to canvas
         self.curLot.add_to_canvas(self.canvas)
         self.canvas.pack()
+
+    def on_car_entered(self, min_dist_poi):
+        self.curLot.flash_zones(self.canvas, min_dist_poi)
