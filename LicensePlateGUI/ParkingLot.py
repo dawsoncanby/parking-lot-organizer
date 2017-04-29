@@ -30,9 +30,11 @@ class ParkingLot:
     def add_to_canvas(self, canvas):
         # add each zone to the canvas and update references
         for z in self.zones:
-            self.zone_refs.append(canvas.create_rectangle(z.x * self.spot_pixel_size, z.y * self.spot_pixel_size,
-                                                          z.width * self.spot_pixel_size, z.height * self.spot_pixel_size,
-                                                          fill="white"))
+            self.zone_refs.append(canvas.create_rectangle(
+                    z.x * self.spot_pixel_size, z.y * self.spot_pixel_size,
+                    z.width * self.spot_pixel_size + z.x * self.spot_pixel_size,
+                    z.height * self.spot_pixel_size + z.y * self.spot_pixel_size,
+                    fill="white"))
 
     def remove_from_canvas(self, canvas):
         for zr in self.zone_refs:
