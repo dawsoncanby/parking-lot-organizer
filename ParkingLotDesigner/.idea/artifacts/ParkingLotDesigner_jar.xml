@@ -1,0 +1,8 @@
+<component name="ArtifactManager">
+  <artifact type="jar" name="ParkingLotDesigner:jar">
+    <output-path>$PROJECT_DIR$/out/artifacts/ParkingLotDesigner_jar</output-path>
+    <root id="archive" name="ParkingLotDesigner.jar">
+      <element id="module-output" name="ParkingLotDesigner" />
+    </root>
+  </artifact>
+</component>
