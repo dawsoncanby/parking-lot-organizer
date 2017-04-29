@@ -14,7 +14,7 @@ public class DesignerWindowRunner implements Runnable {
         JFrame frame = new JFrame("Parking Lot Designer");
 
         frame.setMinimumSize(new Dimension(320, 240));
-        frame.setSize(640, 480);
+        frame.setSize(480, 320);
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         frame.setLocationRelativeTo(null);
 

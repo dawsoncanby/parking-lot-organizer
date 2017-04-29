@@ -7,12 +7,10 @@ class ParkingLotGUI:
     def __init__(self):
         # setup window
         self.window = tk.Tk()
-	self.fullscreen = False
-	self.window.bind('<Escape>', self.toggle_fullscreen)
-        #self.window.minsize(width=640, height=480)
-        #self.window.maxsize(width=640, height=480)
-        self.width = 640
-        self.height = 480
+        self.fullscreen = False
+        self.window.bind('<Escape>', self.toggle_fullscreen)
+        self.width = 480
+        self.height = 320
         self.canvas = tk.Canvas(self.window)
         self.canvas.create_rectangle(0, 0, self.width, self.height, fill="black")
 
@@ -22,7 +20,6 @@ class ParkingLotGUI:
     def toggle_fullscreen(self, event=None):
         self.fullscreen = not self.fullscreen
         self.window.attributes('-fullscreen', self.fullscreen)
-	
 
 # load a parking lot from the given file path and put it on the canvas
     def load_lot(self, path):
@@ -33,7 +30,7 @@ class ParkingLotGUI:
         width_height = map(int, first_line.split())
 
         # init lot
-        self.curLot = ParkingLot(self.canvas, width_height[0], width_height[1])
+        self.curLot = ParkingLot(self, width_height[0], width_height[1])
 
         # read in zone info
         line = infile.readline()

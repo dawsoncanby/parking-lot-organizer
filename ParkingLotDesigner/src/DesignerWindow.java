@@ -71,7 +71,7 @@ public class DesignerWindow extends JPanel {
         // TODO: add help button
 
         // init empty canvas
-        curLotCanvas = new ParkingLotCanvas(20, 20);
+        curLotCanvas = new ParkingLotCanvas(48, 32);
 
         add(curLotCanvas, BorderLayout.CENTER);
         add(buttonPanel, BorderLayout.NORTH);

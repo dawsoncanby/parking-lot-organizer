@@ -1,5 +1,5 @@
 from ParkingLotGUI import *
 
 gui = ParkingLotGUI()
-gui.load_lot("test.txt")
+gui.load_lot("test2.txt")
 gui.window.mainloop()

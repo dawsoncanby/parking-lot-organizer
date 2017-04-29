@@ -3,13 +3,18 @@ from Zone import *
 
 class ParkingLot:
 
-    def __init__(self, canvas, width, height):
+    def __init__(self, gui, width, height):
 
         # the dimensions of the lot in spaces
         self.width = width
         self.height = height
 
-        self.spot_pixel_size = canvas.width / width
+        width_pix_size = gui.width / width
+        height_pix_size = gui.height / height
+
+        self.spot_pixel_size = width_pix_size if width_pix_size < height_pix_size else height_pix_size
+
+        print self.spot_pixel_size
 
         # the physical zone objects of the lot
         self.zones = []
