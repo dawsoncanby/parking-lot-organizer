@@ -11,8 +11,10 @@ class ParkingLotGUI:
 	self.window.bind('<Escape>', self.toggle_fullscreen)
         #self.window.minsize(width=640, height=480)
         #self.window.maxsize(width=640, height=480)
+        self.width = 640
+        self.height = 480
         self.canvas = tk.Canvas(self.window)
-        self.canvas.create_rectangle(0, 0, 640, 480, fill="black")
+        self.canvas.create_rectangle(0, 0, self.width, self.height, fill="black")
 
         # init vars
         self.curLot = None
@@ -31,7 +33,7 @@ class ParkingLotGUI:
         width_height = map(int, first_line.split())
 
         # init lot
-        self.curLot = ParkingLot(width_height[0], width_height[1])
+        self.curLot = ParkingLot(self.canvas, width_height[0], width_height[1])
 
         # read in zone info
         line = infile.readline()

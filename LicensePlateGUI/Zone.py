@@ -6,3 +6,5 @@ class Zone:
         self.width = width
         self.height = height
         self.dist_from_poi = dist_from_poi
+        self.vertical = self.width > self.height # true when this zone is a column
+
