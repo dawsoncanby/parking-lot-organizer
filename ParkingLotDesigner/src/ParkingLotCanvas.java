@@ -19,7 +19,7 @@ public class ParkingLotCanvas extends JComponent {
     private ParkingLot parkingLot;
 
     // the pixel size of one parking space
-    public static final int sizeofSpace = 10;
+    public static int sizeofSpace = 15;
 
     // the pixel location of a users click (where they want to start drawing a new zone)
     private int startClickX, startClickY;

@@ -4,24 +4,30 @@ from ParkingLot import *
 
 class ParkingLotGUI:
 
-    def __init__(self):
+    def __init__(self, path, min_dist_poi):
         # setup window
         self.window = tk.Tk()
-        self.fullscreen = False
-        self.window.bind('<Escape>', self.toggle_fullscreen)
         self.width = 480
         self.height = 320
         self.canvas = tk.Canvas(self.window)
         self.canvas.create_rectangle(0, 0, self.width, self.height, fill="black")
 
+        # setup event listeners
+        self.fullscreen = False
+        self.window.bind('<Escape>', self.toggle_fullscreen)
+
+        self.window.bind('<<CarEntered>>', self.on_car_entered)
+
         # init vars
-        self.curLot = None
+        self.load_lot(path)
+        self.on_car_entered(min_dist_poi)
+
 
     def toggle_fullscreen(self, event=None):
         self.fullscreen = not self.fullscreen
         self.window.attributes('-fullscreen', self.fullscreen)
 
-# load a parking lot from the given file path and put it on the canvas
+    # load a parking lot from the given file path and put it on the canvas
     def load_lot(self, path):
         infile = open(path, 'r')
 
@@ -47,7 +53,8 @@ class ParkingLotGUI:
 
         # add zones to canvas
         self.curLot.add_to_canvas(self.canvas)
+        self.window.update()
         self.canvas.pack()
 
     def on_car_entered(self, min_dist_poi):
-        self.curLot.flash_zones(self.canvas, min_dist_poi)
+        self.curLot.flash_zones(self.window, self.canvas, min_dist_poi)

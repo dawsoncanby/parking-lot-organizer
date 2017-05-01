@@ -54,18 +54,20 @@ class ParkingLot:
                         outline='white'
                     ))
 
-    def flash_zones(self, canvas, min_poi_dist):
-        # loop until done flashing
-        while self.cur_flashes != self.total_flashes + 1:
+    def flash_zones(self, window, canvas, min_poi_dist):
+        # recursively call until done flashing
 
-
+        # we are done
+        if self.cur_flashes == self.total_flashes + 1:
+            return
+        else:
             # if its time to flash
             if time() - self.last_flash_time > self.flash_interval:
                 # update time and numflashes
                 self.last_flash_time = time()
                 self.cur_flashes += 1
 
-                print 'flashed'
+                print 'flashed: ' + str(min_poi_dist)
 
                 # flash zones
                 for z in self.zones:
@@ -78,12 +80,20 @@ class ParkingLot:
                             fill='#00ff00'
                         ))
 
+                window.update()
+
                 # sleep until its time to remove flash
                 sleep(self.flash_interval / 2)
 
                 # remove flashes from canvas
                 for r in self.flash_refs:
                     canvas.delete(r)
+
+                window.update()
+
+                # sleep until its time to recursively call
+                sleep(self.flash_interval / 2)
+                self.flash_zones(window, canvas, min_poi_dist)
 
     def remove_from_canvas(self, canvas):
         for zr in self.spot_refs:

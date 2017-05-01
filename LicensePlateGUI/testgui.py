@@ -1,7 +1,4 @@
 from ParkingLotGUI import *
+from sys import *
 
-gui = ParkingLotGUI()
-gui.load_lot("test2.txt")
-
-gui.on_car_entered(1)
-gui.window.mainloop()
+gui = ParkingLotGUI('test2.txt', 30)

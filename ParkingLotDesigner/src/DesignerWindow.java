@@ -89,7 +89,7 @@ public class DesignerWindow extends JPanel {
             curLotCanvas = canvas;
             add(curLotCanvas, BorderLayout.CENTER);
             repaint();
-            curLotCanvas.repaint();
+            revalidate();
         }
     }
 
@@ -161,5 +161,9 @@ public class DesignerWindow extends JPanel {
             return curLotCanvas.getParkingLot().writeParkingLot(fileChooser.getSelectedFile());
         }
         return false;
+    }
+
+    public ParkingLotCanvas getCurLotCanvas() {
+        return curLotCanvas;
     }
 }
