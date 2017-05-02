@@ -22,7 +22,6 @@ class ParkingLotGUI:
         self.load_lot(path)
         self.on_car_entered(min_dist_poi)
 
-
     def toggle_fullscreen(self, event=None):
         self.fullscreen = not self.fullscreen
         self.window.attributes('-fullscreen', self.fullscreen)

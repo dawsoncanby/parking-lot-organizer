@@ -27,7 +27,7 @@ class ParkingLot:
         self.flash_interval = 0.25
 
         # how many times to flash
-        self.total_flashes = 5
+        self.total_flashes = 10
 
         # how many flashes have occured
         self.cur_flashes = 0

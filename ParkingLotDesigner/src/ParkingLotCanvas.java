@@ -1,8 +1,9 @@
+import sun.security.krb5.internal.crypto.Des;
+
 import javax.swing.*;
 import java.awt.*;
-import java.awt.event.MouseEvent;
-import java.awt.event.MouseListener;
-import java.awt.event.MouseMotionListener;
+import java.awt.event.*;
+import java.beans.PropertyChangeListener;
 
 /**
  * Created by dawsoncanby on 4/24/17.
@@ -169,8 +170,48 @@ public class ParkingLotCanvas extends JComponent {
      * @param z the zone that was clicked
      */
     private void showZoneOptionsMenu(Zone z) {
-        System.out.println("options");
-        // TODO: add delete/change dist options
+        // setup window
+        JFrame optionsFrame = new JFrame("Zone Options");
+        optionsFrame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        optionsFrame.setResizable(false);
+
+        JPanel optionsPanel = new JPanel();
+        optionsPanel.setLayout(new FlowLayout());
+
+        JButton deleteButton = new JButton("Delete Zone");
+        deleteButton.addActionListener(new ActionListener() {
+            public void actionPerformed(ActionEvent e) {
+                // delete zone
+                parkingLot.getZones().remove(z);
+                optionsFrame.setVisible(false);
+                optionsFrame.dispose();
+                repaint();
+            }
+        });
+
+        JButton changeDistButton = new JButton("Change Distance from Point of Interest");
+        changeDistButton.addActionListener(new ActionListener() {
+            public void actionPerformed(ActionEvent e) {
+                try {
+                    int val = DesignerWindow.getValidIntFromUser("Enter the new Distance from Point of Interest");
+                    z.setDistFromPOI(val);
+                    optionsFrame.setVisible(false);
+                    optionsFrame.dispose();
+                    repaint();
+                }
+                catch (Exception ex) {
+
+                }
+            }
+        });
+
+        optionsPanel.add(changeDistButton);
+        optionsPanel.add(deleteButton);
+
+        optionsFrame.setContentPane(optionsPanel);
+        optionsFrame.pack();
+        optionsFrame.setLocationRelativeTo(null);
+        optionsFrame.setVisible(true);
     }
 
     /**

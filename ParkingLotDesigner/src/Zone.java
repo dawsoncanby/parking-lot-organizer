@@ -63,7 +63,7 @@ public class Zone {
     public void draw(Graphics2D g) {
         g.setColor(Color.white);
         g.fill(getScreenRect());
-        g.setColor(Color.gray);
+        g.setColor(Color.orange);
         g.drawString("distance: ", getScreenRect().x + stringOffsetX, getScreenRect().y + stringOffsetY);
         g.drawString("" + distFromPOI, getScreenRect().x + stringOffsetX, getScreenRect().y + stringOffsetY * 2);
     }
@@ -72,4 +72,7 @@ public class Zone {
         return x + " " + y + " " + width + " " + height + " " + distFromPOI;
     }
 
+    public void setDistFromPOI(int distFromPOI) {
+        this.distFromPOI = distFromPOI;
+    }
 }
