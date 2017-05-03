@@ -12,8 +12,10 @@ class ParkingLot:
         width_pix_size = gui.width / width
         height_pix_size = gui.height / height
 
-        self.spot_pixel_size = width_pix_size if width_pix_size < height_pix_size else height_pix_size
+        # dynamic resizing
+        # self.spot_pixel_size = width_pix_size if width_pix_size < height_pix_size else height_pix_size
 
+        self.spot_pixel_size = 10
         print self.spot_pixel_size
 
         # the physical zone objects of the lot
