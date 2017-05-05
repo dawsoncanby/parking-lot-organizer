@@ -1,4 +1,3 @@
 from ParkingLotGUI import *
-from sys import *
 
-gui = ParkingLotGUI('../test.txt', 20)
+gui = ParkingLotGUI('../test.txt', 40)

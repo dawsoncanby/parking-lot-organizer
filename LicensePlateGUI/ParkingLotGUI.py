@@ -57,3 +57,4 @@ class ParkingLotGUI:
 
     def on_car_entered(self, min_dist_poi):
         self.curLot.flash_zones(self.window, self.canvas, min_dist_poi)
+        self.window.destroy()
